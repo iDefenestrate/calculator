@@ -1,0 +1,10 @@
+.calc-body {
+  padding-top: 10px;
+  padding-bottom: 12px;
+  background-color: rgb(207, 203, 203);
+  border: 1px solid rgb(6, 6, 8);
+  border-radius: 5%;
+  width: 50%;
+  height: 500px;
+  display: flex;
+}
