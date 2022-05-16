@@ -20,3 +20,19 @@ const operate = (a, b, operator) => {
     return divide(a, b);
   }
 };
+
+const display = document.querySelector('.main-display');
+const digit = document.querySelectorAll('.digit');
+const clear = document.querySelector('.clear-all');
+const operator = document.querySelectorAll('.operator');
+
+const bank = [];
+
+digit.forEach((digit) => {
+  digit.addEventListener('click', () => {
+    bank.push(digit.textContent);
+    let newbank = bank.join('');
+    newbank = Number(newbank);
+    display.textContent = newbank;
+  });
+});

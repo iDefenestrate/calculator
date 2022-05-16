@@ -1,16 +1,16 @@
 body {
   display: flex;
   justify-content: center;
-  background-color: rgba(2, 42, 80, 0.849);
+  background-color: rgba(192, 192, 192, 0.849);
 }
 
 .calc-body {
-  background-color: rgb(207, 203, 203);
+  background-color: rgb(185, 143, 240);
   border: 1px solid rgb(6, 6, 8);
   border-radius: 5%;
   width: 370px;
   height: 450px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 }
 
 .inner {
@@ -24,7 +24,6 @@ body {
 .calc-top {
   width: 300px;
   display: flex;
-  flex: 0 0 0px;
 }
 
 .calc-bottom {
@@ -34,12 +33,26 @@ body {
 .display {
   background-color: rgb(255, 251, 251);
   width: 400px;
-  height: 50px;
-  font-size: 20px;
+  height: 80px;
+  font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   border: 1px solid rgb(26, 0, 0);
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 5px;
+  padding-right: 5px;
 }
+
+.upper-display {
+  color: gray;
+  font-size: 24px;
+}
+
+/* .main-display {
+} */
 
 .keys {
   display: grid;
@@ -48,7 +61,6 @@ body {
 }
 
 .button {
-  background-color: white;
   height: 55px;
   width: 55px;
   display: flex;
@@ -57,4 +69,33 @@ body {
   border: 1px solid rgb(5, 0, 0);
   font-size: 25px;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 800px;
+}
+
+.operator {
+  background-color: rgb(2, 78, 53);
+  color: white;
+}
+
+.operator:hover {
+  background-color: rgb(50, 190, 160, 0.3);
+}
+
+.operator:active {
+  background-color: rgb(50, 190, 160, 1);
+}
+
+.digit,
+.clear {
+  background-color: rgb(226, 192, 40);
+}
+
+.digit:hover,
+.clear:hover {
+  background-color: rgba(255, 147, 5, 0.3);
+}
+
+.digit:active,
+.clear:active {
+  background-color: rgb(255, 147, 5, 1);
 }
