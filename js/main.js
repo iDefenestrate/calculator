@@ -22,8 +22,16 @@ class Calculator {
     this.main = this.main.toString() + number.toString();
   }
 
+  selectOperation(operation) {
+    if (this.main === '') return;
+    this.operation = operation;
+    this.upper = this.main;
+    this.main = '';
+  }
+
   update() {
     this.display.innerText = this.main;
+    this.upperDisplay.innerText = this.upper;
   }
 }
 
@@ -32,6 +40,13 @@ const calculator = new Calculator(display, upperDisplay);
 digit.forEach((digit) => {
   digit.addEventListener('click', () => {
     calculator.addDigit(digit.innerText);
+    calculator.update();
+  });
+});
+
+operator.forEach((digit) => {
+  digit.addEventListener('click', () => {
+    calculator.selectOperation(digit.innerText);
     calculator.update();
   });
 });
