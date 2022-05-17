@@ -18,6 +18,7 @@ class Calculator {
   }
 
   addDigit(number) {
+    if (number === '.' && this.main.includes('.')) return;
     this.main = this.main.toString() + number.toString();
   }
 
