@@ -2,10 +2,12 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgba(192, 192, 192, 0.849);
+  padding: 0;
+  margin: 0;
 }
 
 .calc-body {
-  background-color: rgb(185, 143, 240);
+  background-color: rgb(187, 100, 0);
   border: 1px solid rgb(6, 6, 8);
   border-radius: 5%;
   width: 370px;
@@ -30,7 +32,7 @@ body {
   margin-top: 30px;
 }
 
-.display {
+.numbers {
   background-color: rgb(255, 251, 251);
   width: 400px;
   height: 80px;
@@ -50,9 +52,6 @@ body {
   color: gray;
   font-size: 24px;
 }
-
-/* .main-display {
-} */
 
 .keys {
   display: grid;
