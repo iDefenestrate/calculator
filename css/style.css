@@ -17,8 +17,7 @@ body {
 .main {
   display: flex;
   min-height: 500px;
-  max-height: 500px;
-  height: 75vh;
+  height: 70vh;
   margin-top: 50px;
 }
 
@@ -74,4 +73,12 @@ button:hover {
 
 button:active {
   background-color: rgba(226, 255, 172, 1);
+}
+
+.span-2 {
+  grid-row: span 2;
+}
+
+.span-2-col {
+  grid-column: span 2;
 }
