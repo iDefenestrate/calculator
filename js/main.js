@@ -11,15 +11,15 @@ class Calculator {
   constructor(upperDisplay, lowerDisplay) {
     this.upper = upperDisplay;
     this.lower = lowerDisplay;
-    this.clear();
+    this.clearAll();
   }
 
-  clear() {
+  clear() {}
+
+  clearAll() {
     this.upper = '';
     this.lower = '';
   }
-
-  clearAll() {}
 
   delete() {}
 
@@ -51,6 +51,7 @@ class Calculator {
 
   updateDisplay() {
     lowerDisplay.innerText = this.lower;
+    upperDisplay.innerText = this.upper;
   }
 }
 
@@ -67,4 +68,9 @@ operator.forEach((operator) => {
   operator.addEventListener('click', () => {
     calculator.selectOperation(operator.innerText);
   });
+});
+
+clearAll.addEventListener('click', () => {
+  calculator.clearAll();
+  calculator.updateDisplay();
 });
