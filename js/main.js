@@ -34,19 +34,30 @@ class Calculator {
   selectOperation(operator) {
     switch (operator) {
       case '+':
-        console.log('hi');
+        this.operator = '+';
+        this.upper = this.lower + ' +';
+        this.lower = '';
         break;
       case '-':
-        console.log('no');
+        this.operator = '-';
+        this.upper = this.lower + ' -';
+        this.lower = '';
+
         break;
       case '×':
-        console.log('hie');
+        this.operator = '×';
+        this.upper = this.lower + ' ×';
+        this.lower = '';
+
         break;
       case '÷':
-        console.log('frwer');
+        this.operator = '÷';
+        this.upper = this.lower + ' ÷';
+        this.lower = '';
+
         break;
       default:
-        console.log('yo');
+        return;
     }
   }
 
@@ -70,6 +81,7 @@ digit.forEach((digit) => {
 operator.forEach((operator) => {
   operator.addEventListener('click', () => {
     calculator.selectOperation(operator.innerText);
+    calculator.updateDisplay();
   });
 });
 
