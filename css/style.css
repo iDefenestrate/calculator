@@ -17,7 +17,7 @@ body {
 .main {
   display: flex;
   min-height: 500px;
-  height: 70vh;
+  height: 71vh;
   margin-top: 50px;
 }
 
@@ -78,6 +78,7 @@ button:active {
 .operator {
   background-color: rgba(66, 66, 66, 0.548);
   color: white;
+  font-weight: 550;
 }
 
 .operator:hover {
