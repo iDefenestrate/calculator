@@ -14,14 +14,17 @@ class Calculator {
     this.clearAll();
   }
 
-  clear() {}
-
   clearAll() {
     this.upper = '';
     this.lower = '';
   }
+  clear() {
+    this.lower = '';
+  }
 
-  delete() {}
+  delete() {
+    this.lower = this.lower.slice(0, length - 1);
+  }
 
   appendDigit(number) {
     if (number === '.' && this.lower.includes('.')) return;
@@ -72,5 +75,15 @@ operator.forEach((operator) => {
 
 clearAll.addEventListener('click', () => {
   calculator.clearAll();
+  calculator.updateDisplay();
+});
+
+clear.addEventListener('click', () => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
+deleteBtn.addEventListener('click', () => {
+  calculator.delete();
   calculator.updateDisplay();
 });
