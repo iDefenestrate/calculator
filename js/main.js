@@ -6,6 +6,7 @@ const lowerDisplay = document.querySelector('.lower-display');
 const clear = document.querySelector('.clear');
 const clearAll = document.querySelector('.clear-all');
 const deleteBtn = document.querySelector('.delete');
+const equalBtn = document.querySelector('.equal');
 
 class Calculator {
   constructor(upperDisplay, lowerDisplay) {
@@ -17,55 +18,65 @@ class Calculator {
   clearAll() {
     this.upper = '';
     this.lower = '';
+    this.operator = '';
   }
   clear() {
     this.lower = '';
   }
 
   delete() {
-    this.lower = this.lower.slice(0, length - 1);
+    this.lower = this.lower.toString().slice(0, length - 1);
   }
 
-  appendDigit(number) {
-    if (number === '.' && this.lower.includes('.')) return;
-    this.lower = this.lower.toString() + number.toString();
+  appendDigit(digit) {
+    if (digit === '.' && this.lower.includes('.')) return;
+    this.lower = this.lower.toString() + digit.toString();
   }
 
-  selectOperation(operator) {
-    switch (operator) {
+  selectOperator(operation) {
+    if (this.lower === '') return;
+    if (this.upper !== '') {
+      this.compute();
+    }
+    this.upper = this.lower;
+    this.lower = '';
+    this.operation = operation;
+  }
+
+  compute() {
+    let computation;
+    const prev = parseFloat(this.upper);
+    const curr = parseFloat(this.lower);
+    if (isNaN(prev) || isNaN(curr)) return;
+
+    switch (this.operation) {
       case '+':
-        this.operator = '+';
-        this.upper = this.lower + ' +';
-        this.lower = '';
+        computation = prev + curr;
         break;
       case '-':
-        this.operator = '-';
-        this.upper = this.lower + ' -';
-        this.lower = '';
-
+        computation = prev - curr;
         break;
       case '×':
-        this.operator = '×';
-        this.upper = this.lower + ' ×';
-        this.lower = '';
-
+        computation = prev * curr;
         break;
       case '÷':
-        this.operator = '÷';
-        this.upper = this.lower + ' ÷';
-        this.lower = '';
-
+        computation = prev / curr;
         break;
       default:
         return;
     }
+    this.lower = computation;
+    this.upper = '';
+    this.operation = undefined;
   }
-
-  compute() {}
 
   updateDisplay() {
     lowerDisplay.innerText = this.lower;
     upperDisplay.innerText = this.upper;
+
+    if (this.operation != null) {
+      upperDisplay.innerText = `${this.upper} ${this.operation} ${this.lower}`;
+    }
   }
 }
 
@@ -80,7 +91,7 @@ digit.forEach((digit) => {
 
 operator.forEach((operator) => {
   operator.addEventListener('click', () => {
-    calculator.selectOperation(operator.innerText);
+    calculator.selectOperator(operator.innerText);
     calculator.updateDisplay();
   });
 });
@@ -97,5 +108,10 @@ clear.addEventListener('click', () => {
 
 deleteBtn.addEventListener('click', () => {
   calculator.delete();
+  calculator.updateDisplay();
+});
+
+equalBtn.addEventListener('click', () => {
+  calculator.compute();
   calculator.updateDisplay();
 });
