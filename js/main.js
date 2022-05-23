@@ -18,7 +18,7 @@ class Calculator {
   clearAll() {
     this.upper = '';
     this.lower = '';
-    this.operator = '';
+    this.operation = '';
   }
   clear() {
     this.lower = '';
@@ -61,9 +61,13 @@ class Calculator {
         break;
       case '÷':
         computation = prev / curr;
+
         break;
       default:
         return;
+    }
+    if (`${prev} ${this.operation} ${curr}` !== 0) {
+      computation = computation.toFixed(3);
     }
     this.lower = computation;
     this.upper = '';
