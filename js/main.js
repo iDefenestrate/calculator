@@ -129,3 +129,61 @@ equalBtn.addEventListener('click', () => {
   calculator.compute();
   calculator.updateDisplay();
 });
+
+// Add keyboard support
+
+window.addEventListener('keydown', useKeyboard);
+
+function useKeyboard(e) {
+  if (e.key >= 0 && e.key < 10) {
+    calculator.appendDigit(e.key);
+    calculator.updateDisplay();
+  }
+  if (e.key === '+') {
+    calculator.selectOperator('+');
+    calculator.updateDisplay();
+  }
+  if (e.key === '-') {
+    calculator.selectOperator('-');
+    calculator.updateDisplay();
+  }
+  if (e.key === '*') {
+    calculator.selectOperator('×');
+    calculator.updateDisplay();
+  }
+  if (e.key === '/') {
+    calculator.selectOperator('÷');
+    calculator.updateDisplay();
+  }
+  if (e.key === 'Enter' || e.key === '=') {
+    calculator.compute();
+    calculator.updateDisplay();
+
+    if (e.key >= 0 && e.key < 10) {
+      calculator.appendDigit(e.key);
+      calculator.updateDisplay();
+    }
+  }
+  if (e.key === 'Backspace') {
+    calculator.delete();
+    calculator.updateDisplay();
+  }
+
+  if (e.key === 'Delete') {
+    calculator.clear();
+    calculator.updateDisplay();
+    if (e.key >= 0 && e.key < 10) {
+      calculator.appendDigit(e.key);
+      calculator.updateDisplay();
+    }
+  }
+
+  if (e.key === 'Escape') {
+    calculator.clearAll();
+    calculator.updateDisplay();
+    if (e.key >= 0 && e.key < 10) {
+      calculator.appendDigit(e.key);
+      calculator.updateDisplay();
+    }
+  }
+}
