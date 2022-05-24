@@ -43,33 +43,43 @@ class Calculator {
     this.operation = operation;
   }
 
+  roundNumber(number) {
+    return Math.round(number * 1000) / 1000;
+  }
+
   compute() {
     let computation;
     const prev = parseFloat(this.upper);
     const curr = parseFloat(this.lower);
+
     if (isNaN(prev) || isNaN(curr)) return;
 
     switch (this.operation) {
       case '+':
         computation = prev + curr;
+
         break;
       case '-':
         computation = prev - curr;
+
         break;
       case '×':
         computation = prev * curr;
+
         break;
       case '÷':
         computation = prev / curr;
-
+        if (curr === 0) {
+          alert("Chill! You can't divide by 0!");
+          this.clear();
+          return;
+        }
         break;
       default:
         return;
     }
-    if (`${prev} ${this.operation} ${curr}` !== 0) {
-      computation = computation.toFixed(3);
-    }
-    this.lower = computation;
+
+    this.lower = this.roundNumber(computation);
     this.upper = '';
     this.operation = undefined;
   }
