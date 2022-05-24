@@ -132,9 +132,9 @@ equalBtn.addEventListener('click', () => {
 
 // Add keyboard support
 
-window.addEventListener('keydown', useKeyboard);
+window.addEventListener('keydown', useKeypad);
 
-function useKeyboard(e) {
+function useKeypad(e) {
   if (e.key >= 0 && e.key < 10) {
     calculator.appendDigit(e.key);
     calculator.updateDisplay();
