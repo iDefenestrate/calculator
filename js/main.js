@@ -87,7 +87,7 @@ class Calculator {
 
   changeSign() {
     if (this.lower > 0) {
-      this.lower = Number('-' + this.lower);
+      this.lower = Number(`-${this.lower}`);
     } else if (this.lower < 0) {
       this.lower = Number(this.lower.toString().slice(1));
     } else {
