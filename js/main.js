@@ -7,6 +7,7 @@ const clear = document.querySelector('.clear');
 const clearAll = document.querySelector('.clear-all');
 const deleteBtn = document.querySelector('.delete');
 const equalBtn = document.querySelector('.equal');
+const signBtn = document.querySelector('.plus-minus');
 
 class Calculator {
   constructor(upperDisplay, lowerDisplay) {
@@ -84,6 +85,16 @@ class Calculator {
     this.operation = undefined;
   }
 
+  changeSign() {
+    if (this.lower > 0) {
+      this.lower = Number('-' + this.lower);
+    } else if (this.lower < 0) {
+      this.lower = Number(this.lower.toString().slice(1));
+    } else {
+      return;
+    }
+  }
+
   updateDisplay() {
     lowerDisplay.innerText = this.lower;
     upperDisplay.innerText = this.upper;
@@ -130,6 +141,11 @@ equalBtn.addEventListener('click', () => {
   calculator.updateDisplay();
 });
 
+signBtn.addEventListener('click', () => {
+  calculator.changeSign();
+  calculator.updateDisplay();
+});
+
 // Add keyboard support
 
 window.addEventListener('keydown', useKeypad);
@@ -155,7 +171,7 @@ function useKeypad(e) {
     calculator.selectOperator('÷');
     calculator.updateDisplay();
   }
-  if (e.key === 'Enter' || e.key === '=') {
+  if (e.key === '=' || e.key === 'Enter') {
     calculator.compute();
     calculator.updateDisplay();
 
@@ -171,7 +187,7 @@ function useKeypad(e) {
 
   if (e.key === 'Delete') {
     calculator.clear();
-    calculator.updateDisplay();
+    2 - calculator.updateDisplay();
     if ((e.key >= 0 && e.key < 10) || e.key === '.') {
       calculator.appendDigit(e.key);
       calculator.updateDisplay();
