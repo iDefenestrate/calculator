@@ -135,7 +135,7 @@ equalBtn.addEventListener('click', () => {
 window.addEventListener('keydown', useKeypad);
 
 function useKeypad(e) {
-  if (e.key >= 0 && e.key < 10) {
+  if ((e.key >= 0 && e.key < 10) || e.key === '.') {
     calculator.appendDigit(e.key);
     calculator.updateDisplay();
   }
@@ -159,7 +159,7 @@ function useKeypad(e) {
     calculator.compute();
     calculator.updateDisplay();
 
-    if (e.key >= 0 && e.key < 10) {
+    if ((e.key >= 0 && e.key < 10) || e.key === '.') {
       calculator.appendDigit(e.key);
       calculator.updateDisplay();
     }
@@ -172,7 +172,7 @@ function useKeypad(e) {
   if (e.key === 'Delete') {
     calculator.clear();
     calculator.updateDisplay();
-    if (e.key >= 0 && e.key < 10) {
+    if ((e.key >= 0 && e.key < 10) || e.key === '.') {
       calculator.appendDigit(e.key);
       calculator.updateDisplay();
     }
